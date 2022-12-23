@@ -170,7 +170,11 @@ def generate_submission_file(data_file, preds, args):
 
 def get_user_seqs(data_file):
     rating_df = pd.read_csv(data_file)
+    # year_df = pd.read_csv('/opt/ml/level2_movierecommendation_recsys-level2-recsys-11/data/train/years.tsv',sep='\t')
+    # year_df = pd.merge(rating_df, year_df, on=['item'])
+    # year_df = year_df.sort_values(['user','year']).loc[:,['user','item']]
     lines = rating_df.groupby("user")["item"].apply(list)
+    # lines = year_df.groupby("user")["item"].apply(list)
     user_seq = []
     item_set = set()
     for line in lines:
@@ -199,7 +203,11 @@ def get_user_seqs(data_file):
 
 def get_user_seqs_long(data_file):
     rating_df = pd.read_csv(data_file)
+    # year_df = pd.read_csv('/opt/ml/level2_movierecommendation_recsys-level2-recsys-11/data/train/years.tsv',sep='\t')
+    # year_df = pd.merge(rating_df, year_df, on=['item'])
+    # year_df = year_df.sort_values(['user','year']).loc[:,['user','item']]
     lines = rating_df.groupby("user")["item"].apply(list)
+    # lines = year_df.groupby("user")["item"].apply(list)
     user_seq = []
     long_sequence = []
     item_set = set()
